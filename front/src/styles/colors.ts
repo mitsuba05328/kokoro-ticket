@@ -1,0 +1,18 @@
+export const colors = {
+  background: '#F7FBFF',
+  surface: '#FFFFFF',
+  frameBorder: '#9CD3FF',
+  primary: '#5AAEF5',
+  primarySoft: '#81BFF8',
+  primaryPale: '#EAF6FF',
+  primaryBorder: '#A9D8FF',
+  primaryAccent: '#66B6FA',
+  textPrimary: '#344A67',
+  textSecondary: '#7E93AF',
+  textMuted: '#A1AFC2',
+  divider: '#E8F3FD',
+  navInactive: '#7E93AF',
+  shadow: '#A6D4FB',
+  cardShadow: '#CAE7FF',
+  plusBorder: '#F4FAFF',
+} as const;
