@@ -40,7 +40,11 @@ function renderIcon(item: NavItem) {
   return <Ionicons name={item.icon as React.ComponentProps<typeof Ionicons>['name']} size={size} color={color} />;
 }
 
-export function BottomNavigation() {
+type BottomNavigationProps = {
+  onCreatePress?: () => void;
+};
+
+export function BottomNavigation({ onCreatePress }: BottomNavigationProps) {
   return (
     <View style={styles.container}>
       <View style={styles.divider} />
@@ -49,7 +53,11 @@ export function BottomNavigation() {
           if (item.type === 'plus') {
             return (
               <View key={item.key} style={styles.plusSlot}>
-                <TouchableOpacity style={styles.plusButton} activeOpacity={0.85}>
+                <TouchableOpacity
+                  style={styles.plusButton}
+                  activeOpacity={0.85}
+                  onPress={onCreatePress}
+                >
                   <Feather name="plus" size={36} color={colors.surface} />
                 </TouchableOpacity>
                 <Text style={styles.label}>作る</Text>
