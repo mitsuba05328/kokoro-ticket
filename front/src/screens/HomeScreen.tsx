@@ -1,13 +1,18 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { BottomNavigation } from '../components/BottomNavigation';
 import { Header } from '../components/Header';
 import { MainTicketCard } from '../components/MainTicketCard';
 import { TicketListSection } from '../components/TicketListSection';
+import { RootStackParamList } from '../navigation/types';
 import { receivedTickets, todayTicket } from '../data/tickets';
 import { colors } from '../styles/colors';
 
 export default function HomeScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
@@ -35,7 +40,7 @@ export default function HomeScreen() {
             <TicketListSection tickets={receivedTickets} />
           </ScrollView>
 
-          <BottomNavigation />
+          <BottomNavigation onCreatePress={() => navigation.navigate('CreateTicket')} />
         </View>
       </View>
     </SafeAreaView>
