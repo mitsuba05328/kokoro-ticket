@@ -28,8 +28,8 @@ export default function HomeScreen() {
             <MainTicketCard
               title={todayTicket.title}
               message={todayTicket.message}
-              catEmoji={todayTicket.catEmoji}
-              catText={todayTicket.catText}
+              placeholderTitle={todayTicket.placeholderTitle}
+              placeholderSubtitle={todayTicket.placeholderSubtitle}
             />
 
             <TicketListSection tickets={receivedTickets} />
@@ -51,28 +51,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     justifyContent: 'center',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
   phoneFrame: {
     flex: 1,
     backgroundColor: colors.surface,
     borderRadius: 34,
-    borderWidth: 2.5,
-    borderColor: colors.frameBorder,
+    shadowColor: colors.shadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 2,
     overflow: 'hidden',
   },
   content: {
     flex: 1,
   },
   contentContainer: {
-    paddingHorizontal: 20,
-    paddingTop: 14,
+    paddingHorizontal: 22,
+    paddingTop: 16,
     paddingBottom: 160,
   },
   greetingWrap: {
     marginTop: 8,
-    marginBottom: 18,
+    marginBottom: 22,
   },
   greeting: {
     fontSize: 19,

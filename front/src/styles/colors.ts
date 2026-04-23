@@ -7,6 +7,8 @@ export const colors = {
   primaryPale: '#EAF6FF',
   primaryBorder: '#A9D8FF',
   primaryAccent: '#66B6FA',
+  placeholderBackground: '#F8FCFF',
+  placeholderBorder: '#D7EBFB',
   textPrimary: '#344A67',
   textSecondary: '#7E93AF',
   textMuted: '#A1AFC2',

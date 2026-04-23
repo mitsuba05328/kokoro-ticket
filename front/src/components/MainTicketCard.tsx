@@ -5,15 +5,15 @@ import { colors } from '../styles/colors';
 type MainTicketCardProps = {
   title: string;
   message: string;
-  catEmoji: string;
-  catText: string;
+  placeholderTitle: string;
+  placeholderSubtitle: string;
 };
 
 export function MainTicketCard({
   title,
   message,
-  catEmoji,
-  catText,
+  placeholderTitle,
+  placeholderSubtitle,
 }: MainTicketCardProps) {
   return (
     <View style={styles.wrapper}>
@@ -23,13 +23,11 @@ export function MainTicketCard({
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.message}>{message}</Text>
 
-          <View style={styles.catRow}>
-            <Text style={styles.decoration}>♡</Text>
-            <View style={styles.catCenter}>
-              <Text style={styles.catEmoji}>{catEmoji}</Text>
-              <Text style={styles.catText}>{catText}</Text>
+          <View style={styles.placeholderArea}>
+            <View style={styles.placeholderInner}>
+              <Text style={styles.placeholderTitle}>{placeholderTitle}</Text>
+              <Text style={styles.placeholderSubtitle}>{placeholderSubtitle}</Text>
             </View>
-            <Text style={styles.decoration}>♡</Text>
           </View>
         </View>
       </View>
@@ -52,20 +50,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryPale,
     borderRadius: 26,
     padding: 8,
-    shadowColor: colors.shadow,
-    shadowOpacity: 0.22,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 3,
   },
   innerCard: {
     backgroundColor: colors.surface,
     borderRadius: 22,
-    borderWidth: 2,
+    borderWidth: 1.5,
     borderColor: colors.primaryBorder,
     borderStyle: 'dashed',
     paddingHorizontal: 18,
-    paddingVertical: 22,
+    paddingTop: 22,
+    paddingBottom: 18,
     alignItems: 'center',
   },
   title: {
@@ -80,28 +74,30 @@ const styles = StyleSheet.create({
     color: colors.primarySoft,
     fontWeight: '700',
   },
-  catRow: {
-    marginTop: 18,
+  placeholderArea: {
+    marginTop: 20,
     width: '100%',
-    flexDirection: 'row',
+    minHeight: 150,
+    borderRadius: 18,
+    backgroundColor: colors.placeholderBackground,
+    borderWidth: 1,
+    borderColor: colors.placeholderBorder,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
   },
-  decoration: {
-    fontSize: 28,
-    color: colors.primarySoft,
-  },
-  catCenter: {
+  placeholderInner: {
     alignItems: 'center',
   },
-  catEmoji: {
-    fontSize: 76,
-  },
-  catText: {
-    marginTop: -6,
-    fontSize: 18,
-    color: colors.primaryAccent,
+  placeholderTitle: {
+    fontSize: 17,
     fontWeight: '700',
+    color: colors.primaryAccent,
+  },
+  placeholderSubtitle: {
+    marginTop: 6,
+    fontSize: 13,
+    color: colors.textMuted,
+    fontWeight: '600',
   },
 });
