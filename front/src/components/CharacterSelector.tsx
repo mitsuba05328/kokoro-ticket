@@ -1,10 +1,10 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { CharacterItem } from '../data/createTicket';
+import { CatIllustrationItem } from '../data/createTicket';
 import { colors } from '../styles/colors';
 
 type CharacterSelectorProps = {
-  characters: CharacterItem[];
+  characters: CatIllustrationItem[];
   selectedCharacterId: string;
   onSelect: (characterId: string) => void;
 };
@@ -16,7 +16,7 @@ export function CharacterSelector({
 }: CharacterSelectorProps) {
   return (
     <View>
-      <Text style={styles.sectionTitle}>キャラクターを選ぼう</Text>
+      <Text style={styles.sectionTitle}>イラストを選ぼう</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
