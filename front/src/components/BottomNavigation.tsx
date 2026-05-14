@@ -8,19 +8,18 @@ type NavItem = {
   label: string;
   icon: string;
   type: 'feather' | 'mci' | 'ion' | 'plus';
-  active?: boolean;
 };
 
 const navItems: NavItem[] = [
-  { key: 'home', label: 'ホーム', icon: 'home', type: 'feather', active: true },
+  { key: 'home', label: 'ホーム', icon: 'home', type: 'feather' },
   { key: 'ticket', label: 'チケット', icon: 'ticket-percent-outline', type: 'mci' },
   { key: 'create', label: '作る', icon: 'plus', type: 'plus' },
   { key: 'memory', label: '思い出', icon: 'image-outline', type: 'ion' },
   { key: 'mypage', label: 'マイページ', icon: 'person-outline', type: 'ion' },
 ];
 
-function renderIcon(item: NavItem) {
-  const color = item.active ? colors.primary : colors.navInactive;
+function renderIcon(item: NavItem, active: boolean) {
+  const color = active ? colors.primary : colors.navInactive;
   const size = 24;
 
   if (item.type === 'feather') {
@@ -41,15 +40,37 @@ function renderIcon(item: NavItem) {
 }
 
 type BottomNavigationProps = {
+  activeKey?: string;
+  onHomePress?: () => void;
+  onTicketPress?: () => void;
   onCreatePress?: () => void;
 };
 
-export function BottomNavigation({ onCreatePress }: BottomNavigationProps) {
+export function BottomNavigation({
+  activeKey = 'home',
+  onHomePress,
+  onTicketPress,
+  onCreatePress,
+}: BottomNavigationProps) {
+  const getNavPressHandler = (key: string) => {
+    if (key === 'home') {
+      return onHomePress;
+    }
+
+    if (key === 'ticket') {
+      return onTicketPress;
+    }
+
+    return undefined;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.divider} />
       <View style={styles.navRow}>
         {navItems.map((item) => {
+          const active = item.key === activeKey;
+
           if (item.type === 'plus') {
             return (
               <View key={item.key} style={styles.plusSlot}>
@@ -66,9 +87,14 @@ export function BottomNavigation({ onCreatePress }: BottomNavigationProps) {
           }
 
           return (
-            <TouchableOpacity key={item.key} style={styles.navItem} activeOpacity={0.8}>
-              {renderIcon(item)}
-              <Text style={[styles.label, item.active && styles.activeLabel]}>{item.label}</Text>
+            <TouchableOpacity
+              key={item.key}
+              style={styles.navItem}
+              activeOpacity={0.8}
+              onPress={getNavPressHandler(item.key)}
+            >
+              {renderIcon(item, active)}
+              <Text style={[styles.label, active && styles.activeLabel]}>{item.label}</Text>
             </TouchableOpacity>
           );
         })}

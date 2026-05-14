@@ -40,7 +40,11 @@ export default function HomeScreen() {
             <TicketListSection tickets={receivedTickets} />
           </ScrollView>
 
-          <BottomNavigation onCreatePress={() => navigation.navigate('CreateTicket')} />
+          <BottomNavigation
+            activeKey="home"
+            onTicketPress={() => navigation.navigate('TicketList')}
+            onCreatePress={() => navigation.navigate('CreateTicket')}
+          />
         </View>
       </View>
     </SafeAreaView>
