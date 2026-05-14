@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CreateTicketScreen from './src/screens/CreateTicketScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import TicketListScreen from './src/screens/TicketListScreen';
 import { RootStackParamList } from './src/navigation/types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,6 +37,11 @@ export default function App() {
           name="CreateTicket"
           component={CreateTicketScreen}
           options={{ title: 'チケット作成' }}
+        />
+        <Stack.Screen
+          name="TicketList"
+          component={TicketListScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
